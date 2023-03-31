@@ -1,7 +1,6 @@
 import React from "react";
 import ".././styles/appointments.css";
 import { BiMenuAltLeft } from "react-icons/bi";
-import { AiOutlineSearch } from "react-icons/ai";
 const AppointmentsMenu = () => {
   return (
     <>
@@ -14,14 +13,6 @@ const AppointmentsMenu = () => {
         </div>
       </div>
 
-      <div className="appointmentSeachContainer">
-        <div className="appParagraph">Find your doctor or nurse</div>
-        <div className="appSearch">
-          {" "}
-          <AiOutlineSearch className="searchapp" />
-          <input type="text" placeholder="search by medical condition" />
-        </div>
-      </div>
     </>
   );
 };

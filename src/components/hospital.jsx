@@ -10,12 +10,14 @@ const Hospital = () => {
   const [searchText, setSearchText] = useState("");
   const [hospitals, setHospitals] = useState([]);
   const [showTopSearches, setShowTopSearches] = useState(true);
+  const [loading, setLoading] = useState(false);
   const handleSearch = async () => {
     try {
       const response = await axios.post(
         `https://health-savvy.onrender.com/api/search/hospital?specialization=${searchText}`
         // { specialization: searchText }
       );
+      setLoading(true);
       console.log(response);
       const data = response.data;
 
@@ -25,6 +27,7 @@ const Hospital = () => {
     }
     setShowTopSearches(false);
     console.log(searchText);
+    setLoading(true);
   };
   return (
     <>
@@ -104,6 +107,11 @@ const Hospital = () => {
               hospitalImg="http://whitearkitekter.com/wp-content/uploads/2017/10/Nya-Karolinska-S-White-Arkitekter-c-16.9.jpg"
             />{" "}
           </>
+        )}
+        {hospitals.length === 0 && !showTopSearches && (
+          <div className="alert alert-danger shadow" role="alert">
+            Sorry, we couldn't find what you are looking for.
+          </div>
         )}
       </div>
     </>

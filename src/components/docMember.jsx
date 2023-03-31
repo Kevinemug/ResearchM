@@ -18,7 +18,7 @@ const docMember = () => {
     firstName: "",
     lastName: "",
     description: "",
-    role: "Doctor",
+    role: "",
     phoneNumber: "",
     specialization: [],
   });
@@ -63,8 +63,8 @@ const docMember = () => {
     formData.append("location[province]", data.location.province);
     formData.append("location[district]", data.location.district);
     formData.append("location[street]", data.location.street);
-    formData.append("location[address]", data.location.address);
     formData.append("license", data.license);
+    formData.append("role", data.role);
     formData.append("ProfileImage", data.ProfileImage);
     formData.append("email", data.email);
     formData.append("password", data.password);
@@ -125,6 +125,21 @@ const docMember = () => {
                 id="inputEmail3"
                 name="lastName"
                 value={data.lastName}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              role
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                name="role"
+                value={data.role}
                 onChange={handleChange}
               />
             </div>

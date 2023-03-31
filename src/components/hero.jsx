@@ -5,6 +5,13 @@ import Fade from "react-awesome-reveal";
 import ".././styles/hero.css";
 
 const Hero = ({ title, description, image, fn, link }) => {
+  function handleClick() {
+    window.scrollTo({
+      top: 1000, // adjust this value to scroll to a different position
+      behavior: "smooth", // smooth scrolling animation
+    });
+  }
+
   return (
     <>
       <div
@@ -36,7 +43,10 @@ const Hero = ({ title, description, image, fn, link }) => {
           </Fade>
         </div>
         <div className="btnContainer">
-          <button className="heroBtn animate__animated animate__bounce">
+          <button
+            className="heroBtn animate__animated animate__bounce"
+            onClick={handleClick}
+          >
             {" "}
             Learn More
           </button>

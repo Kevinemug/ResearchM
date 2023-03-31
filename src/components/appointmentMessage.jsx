@@ -1,141 +1,32 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Card, CardBody, CardTitle, CardSubtitle, Table } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Table,
+  Modal,
+  Button,
+  Form,
+  Input,
+  Label,
+  ModalHeader,
+  ModalBody,
+  FormGroup,
+} from "reactstrap";
 import user1 from "../assets/images/users/user1.jpg";
 import user2 from "../assets/images/users/user2.jpg";
 import user3 from "../assets/images/users/user3.jpg";
 import user4 from "../assets/images/users/user4.jpg";
 import user5 from "../assets/images/users/user5.jpg";
-const tableData = [
-  {
-    avatar: user1,
-    name: "Mugisha Kevine",
-    email: "hgover@gmail.com",
-    project: "Monthly checkUP",
-    status: "pending",
-    weeks: (
-      <button
-        className="btn"
-        color="info"
-        style={{ background: "blue", color: "white" }}
-      >
-        Info
-      </button>
-    ),
-    budget: (
-      <button
-        className="btn"
-        color="success"
-        style={{ background: "greenyellow", color: "white" }}
-      >
-        Done
-      </button>
-    ),
-  },
-  {
-    avatar: user2,
-    name: "Prisca Uwamahoro",
-    email: "hgover@gmail.com",
-    project: "I would like to come for an appointment on tuesday",
-    status: "done",
-    weeks: (
-      <button
-        className="btn"
-        color="info"
-        style={{ background: "blue", color: "white" }}
-      >
-        Info
-      </button>
-    ),
-    budget: (
-      <button
-        className="btn"
-        color="success"
-        style={{ background: "greenyellow", color: "white" }}
-      >
-        Done
-      </button>
-    ),
-  },
-  {
-    avatar: user3,
-    name: "Nsenga Queen",
-    email: "hgover@gmail.com",
-    project: "Anemia",
-    status: "holt",
-    weeks: (
-      <button
-        className="btn"
-        color="info"
-        style={{ background: "blue", color: "white" }}
-      >
-        Info
-      </button>
-    ),
-    budget: (
-      <button
-        className="btn"
-        color="success"
-        style={{ background: "greenyellow", color: "white" }}
-      >
-        Done
-      </button>
-    ),
-  },
-  {
-    avatar: user4,
-    name: "Jean Paul Ngoga",
-    email: "hgover@gmail.com",
-    project: "Tuberclosis",
-    status: "pending",
-    weeks: (
-      <button
-        className="btn"
-        color="info"
-        style={{ background: "blue", color: "white" }}
-      >
-        Info
-      </button>
-    ),
-    budget: (
-      <button
-        className="btn"
-        color="success"
-        style={{ background: "greenyellow", color: "white" }}
-      >
-        Done
-      </button>
-    ),
-  },
-  {
-    avatar: user5,
-    name: "Jean Paul Ngoga",
-    email: "hgover@gmail.com",
-    project: "Extreme Cough",
-    status: "done",
-    weeks: (
-      <button
-        className="btn"
-        color="info"
-        style={{ background: "blue", color: "white" }}
-      >
-        Info
-      </button>
-    ),
-    budget: (
-      <button
-        className="btn"
-        color="success"
-        style={{ background: "greenyellow", color: "white" }}
-      >
-        Done
-      </button>
-    ),
-  },
-];
+import { useNavigate } from "react-router-dom";
 
 const AppointmentMessage = () => {
   const [messages, setMessages] = useState([]);
+  const [modal, setShowModel] = useState(false);
+  const [decline, setDecline] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const config = {
@@ -160,6 +51,14 @@ const AppointmentMessage = () => {
     backgroundColor: "blue",
     color: "white",
   });
+  const handleDecline = () => {
+    setShowModel(true);
+  };
+  const handleSendDecline = () => {
+    navigate("/dashboard/alerts");
+    setDecline(true);
+  };
+
   const handleClick = (id, name, email) => {
     const confirmed = window.confirm(
       `Are you sure you want to confirm ${name}?`
@@ -180,6 +79,27 @@ const AppointmentMessage = () => {
 
   return (
     <>
+      <Modal isOpen={modal}>
+        <ModalHeader>Enter reason for Decline</ModalHeader>
+        <ModalBody>
+          <Form>
+            <FormGroup>
+              <Label for="medicineName">Reason:</Label>
+              <Input
+                type="textarea"
+                name="medicineName"
+                id="medicineName"
+                // value={currentMedicine.medicineName}
+                // onChange={handleInputChange}
+              />
+            </FormGroup>
+            <Button color="primary" type="submit" onClick={handleSendDecline}>
+              Send
+            </Button>
+          </Form>
+        </ModalBody>
+      </Modal>
+
       <div>
         <Card>
           <CardBody>
@@ -243,7 +163,7 @@ const AppointmentMessage = () => {
                     <td>
                       <button
                         class="btn btn-danger"
-                        onClick={() => handleDecline(item._id)}
+                        onClick={() => handleDecline()}
                       >
                         Decline
                       </button>

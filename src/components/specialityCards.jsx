@@ -1,7 +1,7 @@
 import React from "react";
 import ".././styles/specialityCard.css";
 import { GiLungs } from "react-icons/gi";
-const SpecialityCard = () => {
+const SpecialityCard = ({ title }) => {
   return (
     <>
       <div className="specialityCardContainer">
@@ -9,7 +9,7 @@ const SpecialityCard = () => {
           <GiLungs className="lungs" />
         </div>
         <div className="specialityDescription">
-          <p className="cardi">Cardiologist</p>
+          <p className="cardi">{title}</p>
           <p className="docs">23 doctors</p>
         </div>
       </div>

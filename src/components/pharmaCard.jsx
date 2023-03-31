@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import ".././styles/pharmaCard.css";
-const PharmaCard = ({ img, medicineName }) => {
+const PharmaCard = ({ img, medicineName, location }) => {
   return (
     <>
       <div className="pharmaCardContainer">
@@ -12,6 +12,7 @@ const PharmaCard = ({ img, medicineName }) => {
           }}
         ></div>
         <div className="medicineName">{medicineName}</div>
+        <div className="medicineName">{location}</div>
         <div className="medBtnContainer">
           <NavLink to="/medicineInfo" style={{ textDecoration: "none" }}>
             <button className="medBtn">Learn more</button>
