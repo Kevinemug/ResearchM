@@ -32,6 +32,7 @@ import Breadcrumbs from "./views/ui/Breadcrumbs";
 import About from "./views/About";
 import Member from "./components/member";
 import DocMember from "./components/docMember";
+import Contact from "./components/contact";
 import HospitalForm from "./components/hospitalForm";
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/nursary/docMemberShip" element={<DocMember />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/log" element={<Log />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/memberShip" element={<Member />} />
         <Route path="/dashboard" element={<FullLayout />}>
           <Route path="/dashboard/starter" element={<Starter />} />

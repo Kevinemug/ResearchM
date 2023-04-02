@@ -19,8 +19,8 @@ const Footer = () => {
               style={{ background: "#43D5CB" }}
             >
               <div>
-                <h2 class="mb-0">Ready for a next project?</h2>
-                <h3 class="text-dark">Let's get started!</h3>
+                <h2 class="mb-0">We Are ALways Looking To Improve </h2>
+                <h3 class="text-dark">Any FeedBack?</h3>
               </div>
               <div class="ml-auto">
                 <a href="#" class="btn btn-dark rounded-0 py-3 px-5">

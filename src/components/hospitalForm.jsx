@@ -99,7 +99,7 @@ function HospitalForm() {
       />
       <div class="registration-form">
         <form onSubmit={handleSubmit}>
-          <div>Apply for member ship </div>
+          <div>Apply for membership </div>
           <div class="form-icon">
             <span>
               <AiOutlineUser style={{ fontSize: "40px" }} />{" "}

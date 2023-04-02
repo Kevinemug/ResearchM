@@ -3,6 +3,8 @@ import "../styles/member.css";
 import axios from "axios";
 import Success from "./success";
 import Nav from "./navigation/nav";
+import { AiOutlineUser } from "react-icons/ai";
+
 import Footer from "./footer/footer";
 
 const docMember = () => {
@@ -104,9 +106,15 @@ const docMember = () => {
         image="https://images.ctfassets.net/19dvw6heztyg/61Wiw0rPAAhXO5QYvTE9Ho/1b172b9fba19e3a0354261d78b5840ae/membership-model.jpg?w=1440&q=75"
       />
 
-      <div className="formi">
-        <p className="apply">Apply for membership below</p>
+      <div class="registration-form">
         <form onSubmit={handleSubmit}>
+          <div>Apply for membership </div>
+          <div class="form-icon">
+            <span>
+              <AiOutlineUser style={{ fontSize: "40px" }} />{" "}
+            </span>
+          </div>
+
           <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">
               First Name:
@@ -114,7 +122,7 @@ const docMember = () => {
             <div class="col-sm-10">
               <input
                 type="text"
-                class="form-control item"
+                class="form-control "
                 id="inputEmail3"
                 name="firstName"
                 value={data.firstName}

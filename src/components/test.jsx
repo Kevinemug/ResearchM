@@ -1,149 +1,352 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import "../styles/member.css";
 import axios from "axios";
+import Success from "./success";
+import Nav from "./navigation/nav";
+import Footer from "./footer/footer";
 
-const LoginAdmin = () => {
-  const navigate = useNavigate();
-  const [formInputs, setFormInputs] = useState({
+const docMember = () => {
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [data, setData] = useState({
+    location: {
+      province: "",
+      district: "",
+      street: "",
+    },
+    license: null,
+    ProfileImage: null,
     email: "",
     password: "",
-  });
-  const [formErrors, setFormErrors] = useState({
-    email: "",
-    password: "",
+    firstName: "",
+    lastName: "",
+    description: "",
+    role: "",
+    phoneNumber: "",
+    specialization: [],
   });
 
-  const validateEmail = (email) => {
-    const re = /\S+@\S+\.\S+/;
-    return re.test(email);
-  };
-
-  const handleInputChange = (event) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormInputs({ ...formInputs, [name]: value });
-    setFormErrors({ ...formErrors, [name]: "" });
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    let errors = {};
-    if (!validateEmail(formInputs.email)) {
-      errors.email = "Invalid email address";
-    }
-    if (formInputs.password.length < 4) {
-      errors.password = "Password must be at least 5 characters";
-    }
-    if (Object.keys(errors).length === 0) {
-      axios
-        .post(
-          "https://health-savvy.onrender.com/api/doctor/dashboard/login",
-          formInputs
-        )
-        .then((response) => {
-          console.log(response);
-          const authToken = response.data.token;
-          console.log("token:", authToken);
-          axios.defaults.headers.common[
-            "Authorization"
-          ] = `Bearer ${authToken}`;
-          navigate("/dashboard/starter");
-        })
-        .catch((error) => {
-          console.log(error);
-          setFormErrors({
-            ...formErrors,
-            password: "Invalid email or password",
-          });
-        });
-    } else {
-      setFormErrors(errors);
-    }
+  const handleFileChange = (event) => {
+    const { name, files } = event.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: files[0],
+    }));
   };
+
+  const handleSpecializationChange = (event) => {
+    const { value } = event.target;
+    setData((prevData) => ({
+      ...prevData,
+      specialization: [value], // store value as an array
+    }));
+  };
+  const handleLocationChange = (event) => {
+    const { name, value } = event.target;
+    setData((prevData) => ({
+      ...prevData,
+      location: {
+        ...prevData.location,
+        [name]: value,
+      },
+    }));
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    console.log("submiting..");
+    const formData = new FormData();
+    formData.append("location[province]", data.location.province);
+    formData.append("location[district]", data.location.district);
+    formData.append("location[street]", data.location.street);
+    formData.append("license", data.license);
+    formData.append("role", data.role);
+    formData.append("ProfileImage", data.ProfileImage);
+    formData.append("email", data.email);
+    formData.append("password", data.password);
+    formData.append("description", data.description);
+    formData.append("firstName", data.firstName);
+    formData.append("lastName", data.lastName);
+    formData.append("phoneNumber", data.phoneNumber);
+    // Use forEach to add each specialization value as an array
+    data.specialization.forEach((value) => {
+      formData.append("specialization[]", value);
+    });
+    try {
+      const response = await axios.post(
+        "https://health-savvy.onrender.com/api/admin/dashboard/doctor",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTJlNTc2MDVkNGVhN2Q3ODQ3MWQ4OCIsImlhdCI6MTY3ODk2NjE5NSwiZXhwIjoxNjgxNTU4MTk1fQ.ta6ttAQBvDnwL5BOGSLtkqZJVhI4sz6Qhegr8Yckgio`,
+          },
+        }
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setShowSuccessPopup(true);
+  };
+
   return (
     <>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-sm-6 col-md-4">
-            <div className="card">
-              <div className="card-header">
-                <h4 style={{ color: "grey", fontStyle: "italic" }}>
-                  Login here
-                </h4>
-              </div>
-              <div className="card-body">
-                <form onSubmit={handleFormSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <FaEnvelope />
-                        </span>
-                      </div>
-                      <input
-                        type="email"
-                        className={`form-control ${
-                          formErrors.email ? "is-invalid" : ""
-                        }`}
-                        id="email"
-                        name="email"
-                        placeholder="Enter email"
-                        value={formInputs.email}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      {formErrors.email && (
-                        <div className="invalid-feedback">
-                          {formErrors.email}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <FaLock />
-                        </span>
-                      </div>
-                      <input
-                        type="password"
-                        className={`form-control ${
-                          formErrors.password ? "is-invalid" : ""
-                        }`}
-                        id="password"
-                        name="password"
-                        placeholder="Enter password"
-                        value={formInputs.password}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      {formErrors.password && (
-                        <div className="invalid-feedback">
-                          {formErrors.password}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary btn-block">
-                    Login
-                  </button>
-                </form>
-                <div className="text-center mt-3">
-                  <p>
-                    Don't have an account?{" "}
-                    <Link to="/signUp">Sign up here</Link>
-                  </p>
-                </div>
+      <Nav
+        title="Apply For Doctor Membership"
+        description="Together we can make the world a better place !"
+        image="https://images.ctfassets.net/19dvw6heztyg/61Wiw0rPAAhXO5QYvTE9Ho/1b172b9fba19e3a0354261d78b5840ae/membership-model.jpg?w=1440&q=75"
+      />
+
+      <div className="formi">
+        <p className="apply">Apply for membership below</p>
+        <form onSubmit={handleSubmit}>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              First Name:
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control item"
+                id="inputEmail3"
+                name="firstName"
+                value={data.firstName}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              Last Name
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                name="lastName"
+                value={data.lastName}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              role
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                name="role"
+                value={data.role}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              Description
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                name="description"
+                value={data.description}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              Tel:
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                name="phoneNumber"
+                value={data.phoneNumber}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              Specialization
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                name="specialization"
+                value={data.specialization}
+                onChange={handleSpecializationChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              Profile Image
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="file"
+                class="form-control"
+                id="inputEmail3"
+                placeholder="Email"
+                name="ProfileImage"
+                onChange={handleFileChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              License
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="file"
+                class="form-control"
+                id="inputEmail3"
+                name="licence"
+                onChange={handleFileChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">
+              Province
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputPassword3"
+                name="province"
+                value={data.location.province}
+                onChange={handleLocationChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">
+              District
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputPassword3"
+                name="district"
+                value={data.location.district}
+                onChange={handleLocationChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">
+              Street
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputPassword3"
+                name="street"
+                value={data.location.street}
+                onChange={handleLocationChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">
+              Email
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="email"
+                class="form-control"
+                id="inputPassword3"
+                name="email"
+                value={data.email}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">
+              Password
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword3"
+                placeholder="Password"
+                name="password"
+                value={data.password}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">
+              Confirm Password
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword3"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-10">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="gridCheck1"
+                />
+                <label class="form-check-label" for="gridCheck1">
+                  I agree to terms and conditions
+                </label>
               </div>
             </div>
           </div>
-        </div>
+          <div class="form-group row">
+            {showSuccessPopup && (
+              <Success description=" Your Application for membership have been received successfully!we will reach out to you as soon as possible!" />
+            )}
+
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
+      <Footer />
     </>
   );
 };
 
-export default LoginAdmin;
+export default docMember;

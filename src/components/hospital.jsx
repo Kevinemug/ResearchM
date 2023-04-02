@@ -84,32 +84,32 @@ const Hospital = () => {
           <>
             <HospitalCards
               hospitalName="H hospital"
-              hospitalKm={3}
+              hospitalKm="3 km from you"
               hospitalImg="https://assets.contenthub.wolterskluwer.com/api/public/content/7f716e7ef5924f299571642e9e163166"
             />
             <HospitalCards
               hospitalName="Hope hospital"
-              hospitalKm={2}
+              hospitalKm="5 km from you"
               hospitalImg="https://c8.alamy.com/comp/RATKP4/regions-hospital-building-showing-the-emergency-room-entrance-in-front-st-paul-minnesota-mn-usa-RATKP4.jpg"
             />
             <HospitalCards
               hospitalName="M hospital"
-              hospitalKm={1}
+              hospitalKm="7 km from you"
               hospitalImg="https://www.mtxcontracts.co.uk/wp-content/uploads/2022/07/John-Radcliffe-Hospital_External.jpg"
             />
             <HospitalCards
               hospitalName="Rise hospital"
-              hospitalKm={4}
+              hospitalKm="8 km from you"
               hospitalImg="https://cdn.systematic.com/media/g0sj1tbg/hospital-building-001-global.jpg?mode=crop&width=1200&height=630&center="
             />
             <HospitalCards
               hospitalName="Love hospital"
-              hospitalKm={7}
+              hospitalKm="8 km from you"
               hospitalImg="https://ccountync.com/wp-content/uploads/2020/02/Carteret-Health-Care-Morehead-1.jpg"
             />
             <HospitalCards
               hospitalName="GHK hospital"
-              hospitalKm={6}
+              hospitalKm="7 km from you"
               hospitalImg="http://whitearkitekter.com/wp-content/uploads/2017/10/Nya-Karolinska-S-White-Arkitekter-c-16.9.jpg"
             />{" "}
           </>

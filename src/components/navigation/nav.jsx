@@ -232,7 +232,7 @@ const Nav = ({ image, title, description }) => {
                             </NavLink>
                           </li>
                           <li>
-                            <NavLink to="docMemberShip">
+                            <NavLink to="/nursary/docMemberShip">
                               <a href="#">Nurse Membership</a>
                             </NavLink>
                           </li>
@@ -282,11 +282,18 @@ const Nav = ({ image, title, description }) => {
                     class={getButtonClassName(4)}
                     onClick={() => handleClickk(4)}
                   >
-                    <a href="contact.html">
-                      <span style={{ textShadow: "2px 2px 2px #333" }}>
-                        Contact
-                      </span>
-                    </a>
+                    <NavLink to="/contact">
+                      <a href="">
+                        <span
+                          style={{
+                            textShadow: "2px 2px 2px #333",
+                            color: "white",
+                          }}
+                        >
+                          Contact
+                        </span>
+                      </a>
+                    </NavLink>
                   </li>
                 </ul>
               </nav>
