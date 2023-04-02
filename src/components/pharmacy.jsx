@@ -7,6 +7,8 @@ import Member from "./member";
 import { BsSearch } from "react-icons/bs";
 import HospitalCards from "./hospitalCards";
 import axios from "axios";
+import Nav from "./navigation/nav";
+import Footer from "./footer/footer";
 
 const Pharmacy = () => {
   const [showContainer, setShowContainer] = useState(false);
@@ -36,14 +38,20 @@ const Pharmacy = () => {
 
   return (
     <>
-      <Hero
+      <Nav
+        image="https://www.universityofcalifornia.edu/sites/default/files/generic-drugs-istock.jpg"
+        title="Pharmacy"
+        description="We are Less Than 1 KM Away!"
+      />
+
+      {/* <Hero
         title="Pharmacy"
         description="We are Less Than 1 KM Away!"
         image="https://www.universityofcalifornia.edu/sites/default/files/generic-drugs-istock.jpg"
         onClick={handleButtonClick}
         link="/memberShip"
       />
-
+ */}
       <div className="searchContainer">
         <div className="searchDescriptionContainer">
           <p className="searchDescription">
@@ -111,6 +119,7 @@ const Pharmacy = () => {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 };

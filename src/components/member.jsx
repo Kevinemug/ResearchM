@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import "../styles/member.css";
 import axios from "axios";
 import Success from "./success";
+import { AiOutlineUser } from "react-icons/ai";
+import Footer from "./footer/footer";
+import Nav from "./navigation/nav";
 
 const Member = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -10,7 +13,7 @@ const Member = () => {
       province: "",
       district: "",
       street: "",
-      address:"",
+      address: "",
     },
     license: null,
     pharmacyImage: null,
@@ -83,229 +86,182 @@ const Member = () => {
 
   return (
     <>
-      <div className="formi">
-        <p className="apply">Apply for membership below</p>
+      <Nav
+        title="Apply For Pharmacy Membership"
+        description="Together we can make the world a better place !"
+        image="https://images.ctfassets.net/19dvw6heztyg/61Wiw0rPAAhXO5QYvTE9Ho/1b172b9fba19e3a0354261d78b5840ae/membership-model.jpg?w=1440&q=75"
+      />
+
+      <div class="registration-form">
         <form onSubmit={handleSubmit}>
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">
-              Pharmacy Name:
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                name="pharmacyName"
-                value={data.pharmacyName}
-                class="form-control"
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">
-              Pharmacist Name
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                id="inputEmail3"
-                name="pharmacistName"
-                value={data.pharmacistName}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">
-              Tel:
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                id="inputEmail3"
-                name="phoneNumber"
-                value={data.phoneNumber}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">
-              Pharmacy Image
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="file"
-                class="form-control"
-                name="pharmacyImage"
-                id="inputEmail3"
-                onChange={handleFileChange}
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">
-              Profile Image
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="file"
-                class="form-control"
-                id="inputEmail3"
-                placeholder="Email"
-                name="profileImage"
-                onChange={handleFileChange}
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">
-              License
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="file"
-                class="form-control"
-                id="inputEmail3"
-                name="license"
-                onChange={handleFileChange}
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
-              Province
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                id="inputPassword3"
-                value={data.location.province}
-                name="province"
-                onChange={handleLocationChange}
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
-              District
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                id="inputPassword3"
-                onChange={handleLocationChange}
-                value={data.location.district}
-                name="district"
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
-              Street
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                id="inputPassword3"
-                onChange={handleLocationChange}
-                value={data.location.street}
-                name="street"
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
-              Address
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="text"
-                class="form-control"
-                id="inputPassword3"
-                onChange={handleLocationChange}
-                value={data.location.address}
-                name="address"
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
-              Email
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="email"
-                class="form-control"
-                id="inputPassword3"
-                onChange={handleChange}
-                value={data.email}
-                name="email"
-              />
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
-              Password
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="password"
-                class="form-control"
-                id="inputPassword3"
-                placeholder="Password"
-                value={data.password}
-                name="password"
-                onChange={handleChange}
-              />
-            </div>
+          <div>Apply for member ship </div>
+          <div class="form-icon">
+            <span>
+              <AiOutlineUser style={{ fontSize: "40px" }} />{" "}
+            </span>
           </div>
 
-          <div class="form-group row">
-            <label for="inputPassword3" class="col-sm-2 col-form-label">
-              Confirm Password
-            </label>
-            <div class="col-sm-10">
-              <input
-                type="password"
-                class="form-control"
-                id="inputPassword3"
-                placeholder="Password"
-              />
-            </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="pharmacyName"
+              value={data.pharmacyName}
+              onChange={handleChange}
+              placeholder="name of pharmacy"
+              className="form-control item"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control item"
+              id="inputEmail3"
+              name="pharmacistName"
+              value={data.pharmacistName}
+              onChange={handleChange}
+              placeholder="name of pharmacist"
+            />
           </div>
 
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="gridCheck1"
-                />
-                <label class="form-check-label" for="gridCheck1">
-                  I agree to terms and conditions
-                </label>
-              </div>
-            </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control item"
+              id="inputEmail3"
+              name="phoneNumber"
+              value={data.phoneNumber}
+              onChange={handleChange}
+              placeholder="pharmacy phone number"
+            />
+          </div>
+          <div class="form-group">
+            upload pharmacy image
+            <input
+              type="file"
+              class="form-control item"
+              name="pharmacyImage"
+              id="inputEmail3"
+              onChange={handleFileChange}
+            />{" "}
+          </div>
+          <div class="form-group">
+            upload profile image
+            <input
+              type="file"
+              class="form-control item"
+              id="inputEmail3"
+              placeholder="Email"
+              name="profileImage"
+              onChange={handleFileChange}
+            />
+          </div>
+          <div class="form-group">
+            upload pharmacy license
+            <input
+              type="file"
+              class="form-control item"
+              id="inputEmail3"
+              name="license"
+              onChange={handleFileChange}
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control item"
+              id="inputPassword3"
+              value={data.location.province}
+              name="province"
+              onChange={handleLocationChange}
+              placeholder="province"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control item"
+              id="inputPassword3"
+              onChange={handleLocationChange}
+              value={data.location.district}
+              name="district"
+              placeholder="district"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control item"
+              id="inputPassword3"
+              onChange={handleLocationChange}
+              value={data.location.street}
+              name="street"
+              placeholder="street"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control item"
+              id="inputPassword3"
+              onChange={handleLocationChange}
+              value={data.location.address}
+              name="address"
+              placeholder="address"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control item"
+              id="inputPassword3"
+              onChange={handleChange}
+              value={data.email}
+              name="email"
+              placeholder="email"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control item"
+              id="inputPassword3"
+              placeholder="Password"
+              value={data.password}
+              name="password"
+              onChange={handleChange}
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control item"
+              id="inputPassword3"
+              placeholder=" confirm password"
+            />
           </div>
           {showSuccessPopup && (
             <Success description=" Your Application for membership have been received successfully!we will reach out to you as soon as possible!" />
           )}
 
-          <div class="form-group row">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary">
-                Submit
-              </button>
-            </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">
+              request membership
+            </button>
+          </div>
+          <div className="text-center mt-3">
+            <p
+              style={{
+                color: "grey",
+                fontStyle: "italic",
+                fontSize: "12px",
+              }}
+            >
+              We will never share your information with anyone else{" "}
+            </p>
           </div>
         </form>
       </div>
+      <Footer />
     </>
   );
 };

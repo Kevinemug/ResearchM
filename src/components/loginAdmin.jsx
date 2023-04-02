@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import axios from "axios";
-
+import { AiOutlineUser } from "react-icons/ai";
+import { FaFacebookF } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { AiOutlineTwitter } from "react-icons/ai";
 const LoginAdmin = () => {
   const navigate = useNavigate();
   const [formInputs, setFormInputs] = useState({
@@ -62,83 +65,77 @@ const LoginAdmin = () => {
   };
   return (
     <>
-      <div className="container">
-        <div className="row justify-content-center">
-          <div className="col-sm-6 col-md-4">
-            <div className="card">
-              <div className="card-header">
-                <h4 style={{ color: "grey", fontStyle: "italic" }}>
-                  Login here
-                </h4>
-              </div>
-              <div className="card-body">
-                <form onSubmit={handleFormSubmit}>
-                  <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <FaEnvelope />
-                        </span>
-                      </div>
-                      <input
-                        type="email"
-                        className={`form-control ${
-                          formErrors.email ? "is-invalid" : ""
-                        }`}
-                        id="email"
-                        name="email"
-                        placeholder="Enter email"
-                        value={formInputs.email}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      {formErrors.email && (
-                        <div className="invalid-feedback">
-                          {formErrors.email}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="password">Password</label>
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <FaLock />
-                        </span>
-                      </div>
-                      <input
-                        type="password"
-                        className={`form-control ${
-                          formErrors.password ? "is-invalid" : ""
-                        }`}
-                        id="password"
-                        name="password"
-                        placeholder="Enter password"
-                        value={formInputs.password}
-                        onChange={handleInputChange}
-                        required
-                      />
-                      {formErrors.password && (
-                        <div className="invalid-feedback">
-                          {formErrors.password}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary btn-block">
-                    Login
-                  </button>
-                </form>
-                <div className="text-center mt-3">
-                  <p>
-                    Don't have an account?{" "}
-                    <Link to="/signUp">Sign up here</Link>
-                  </p>
-                </div>
-              </div>
-            </div>
+      <div class="registration-form">
+        <form onSubmit={handleFormSubmit}>
+          <div class="form-icon">
+            <span>
+              <AiOutlineUser style={{ fontSize: "40px" }} />{" "}
+            </span>
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              className={`form-control item ${
+                formErrors.email ? "is-invalid" : ""
+              }`}
+              id="email"
+              name="email"
+              placeholder="Enter email"
+              value={formInputs.email}
+              onChange={handleInputChange}
+              required
+            />
+            {formErrors.email && (
+              <div className="invalid-feedback">{formErrors.email}</div>
+            )}
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              className={`form-control item${
+                formErrors.password ? "is-invalid" : ""
+              }`}
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              value={formInputs.password}
+              onChange={handleInputChange}
+              required
+            />
+            {formErrors.password && (
+              <div className="invalid-feedback">{formErrors.password}</div>
+            )}
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">
+              Login
+            </button>
+          </div>
+          <div className="text-center mt-3">
+            <p
+              style={{
+                color: "grey",
+                fontStyle: "italic",
+                fontSize: "12px",
+              }}
+            >
+              Don't have an account? <Link to="/signUp">Sign up here</Link>
+            </p>
+          </div>
+        </form>
+
+        <div class="social-media">
+          <h5>Sign up with social media</h5>
+          <div class="social-icons">
+            <a href="#">
+              <FaFacebookF />{" "}
+            </a>
+            <a href="#">
+              <FcGoogle />{" "}
+            </a>
+            <a href="#">
+              <AiOutlineTwitter />{" "}
+            </a>
           </div>
         </div>
       </div>

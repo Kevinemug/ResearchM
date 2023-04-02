@@ -33,11 +33,9 @@ import About from "./views/About";
 import Member from "./components/member";
 import DocMember from "./components/docMember";
 import HospitalForm from "./components/hospitalForm";
-
 const App = () => {
   return (
     <>
-      <Navigation />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/pharmacy" element={<Pharmacy />} />
@@ -48,7 +46,8 @@ const App = () => {
         <Route path="/appointmentsPage" element={<AppointmentsPage />} />
         <Route path="/requestAppointment" element={<RequestAppointment />} />
         <Route path="/appointmentBooking" element={<AppointmentBooking />} />
-        <Route path="/docMemberShip" element={<DocMember />} />
+        <Route path="/hospital/docMemberShip" element={<DocMember />} />
+        <Route path="/nursary/docMemberShip" element={<DocMember />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/log" element={<Log />} />
         <Route path="/memberShip" element={<Member />} />

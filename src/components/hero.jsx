@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
+import { AiFillTwitterCircle } from "react-icons/ai";
+import { MdOutlineReadMore } from "react-icons/md";
 import Fade from "react-awesome-reveal";
 import ".././styles/hero.css";
 
@@ -29,16 +31,16 @@ const Hero = ({ title, description, image, fn, link }) => {
           </p>
         </div>
         <div className="btnContainer">
-          <Link to={link}>
+          {/* <Link to={link}>
             <button className="heroBtn animate__animated animate__bounce">
               {" "}
               Request Membership
             </button>
-          </Link>
+          </Link> */}
 
           <Fade right>
             <div className="heroBtnSpan">
-              <BsArrowRightShort />
+              <AiFillTwitterCircle />
             </div>
           </Fade>
         </div>
@@ -48,11 +50,11 @@ const Hero = ({ title, description, image, fn, link }) => {
             onClick={handleClick}
           >
             {" "}
-            Learn More
+            Learn More{" "}
           </button>
           <Fade right>
             <div className="heroBtnSpan">
-              <BsArrowRightShort />
+              <MdOutlineReadMore />
             </div>
           </Fade>
         </div>

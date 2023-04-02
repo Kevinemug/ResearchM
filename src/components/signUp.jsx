@@ -1,8 +1,16 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaEnvelope, FaLock } from "react-icons/fa";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
+import "../components/account/assets/css/style.css";
+// import "./assets/css/style1.css";
+import { AiOutlineUser } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
+import { AiOutlineTwitter } from "react-icons/ai";
+import { FaFacebookF } from "react-icons/fa";
 import Success from "./success";
+import Footer from "./footer/footer";
+import Nav from "./navigation/nav";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -70,131 +78,123 @@ const SignUp = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-sm-6 col-md-4">
-          <div className="card">
-            <div className="card-header">
-              <h4
-                style={{ color: "grey", fontStyle: "italic", fontSize: "12px" }}
-              >
-                sign up before you send appointment request
-              </h4>
-            </div>
-            <div className="card-body">
-              <form onSubmit={handleFormSubmit}>
-                <div className="form-group">
-                  <label htmlFor="firstName">First Name</label>
-                  <input
-                    type="text"
-                    className={`form-control ${
-                      formErrors.firstName ? "is-invalid" : ""
-                    }`}
-                    id="firstName"
-                    name="firstName"
-                    placeholder="Enter first name"
-                    value={formInputs.firstName}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  {formErrors.firstName && (
-                    <div className="invalid-feedback">
-                      {formErrors.firstName}
-                    </div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <label htmlFor="lastName">Last Name</label>
-                  <input
-                    type="text"
-                    className={`form-control ${
-                      formErrors.lastName ? "is-invalid" : ""
-                    }`}
-                    id="lastName"
-                    name="lastName"
-                    placeholder="Enter last name"
-                    value={formInputs.lastName}
-                    onChange={handleInputChange}
-                    required
-                  />
-                  {formErrors.lastName && (
-                    <div className="invalid-feedback">
-                      {formErrors.lastName}
-                    </div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <FaEnvelope />
-                      </span>
-                    </div>
-                    <input
-                      type="email"
-                      className={`form-control ${
-                        formErrors.email ? "is-invalid" : ""
-                      }`}
-                      id="email"
-                      name="email"
-                      placeholder="Enter email"
-                      value={formInputs.email}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    {formErrors.email && (
-                      <div className="invalid-feedback">{formErrors.email}</div>
-                    )}
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="password">Password</label>
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">
-                        <FaLock />
-                      </span>
-                    </div>
-                    <input
-                      type="password"
-                      className={`form-control ${
-                        formErrors.password ? "is-invalid" : ""
-                      }`}
-                      id="password"
-                      name="password"
-                      placeholder="Enter password"
-                      value={formInputs.password}
-                      onChange={handleInputChange}
-                      required
-                    />
-                    {formErrors.password && (
-                      <div className="invalid-feedback">
-                        {formErrors.password}
-                      </div>
-                    )}
-                  </div>
-                </div>
-                <button type="submit" className="btn btn-primary btn-block">
-                  Login
-                </button>
-              </form>
-              <div className="text-center mt-3">
-                <p
-                  style={{
-                    color: "grey",
-                    fontStyle: "italic",
-                    fontSize: "12px",
-                  }}
-                >
-                  Already have an account? <Link to="/log">login here</Link>
-                </p>
-              </div>
-            </div>
+    <>
+      <Nav
+        image="https://st2.depositphotos.com/2309453/9852/i/950/depositphotos_98520278-stock-photo-smiling-woman-looking-down-at.jpg"
+        title="Login or SignUp  "
+        description=" For a better user experience!"
+      />
+
+      <div class="registration-form">
+        <form onSubmit={handleFormSubmit}>
+          <div class="form-icon">
+            <span>
+              <AiOutlineUser style={{ fontSize: "40px" }} />{" "}
+            </span>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              className={`form-control item ${
+                formErrors.firstName ? "is-invalid" : ""
+              }`}
+              id="firstName"
+              name="firstName"
+              placeholder="Enter first name"
+              value={formInputs.firstName}
+              onChange={handleInputChange}
+              required
+            />
+            {formErrors.firstName && (
+              <div className="invalid-feedback">{formErrors.firstName}</div>
+            )}
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              className={`form-control item ${
+                formErrors.lastName ? "is-invalid" : ""
+              }`}
+              id="lastName"
+              name="lastName"
+              placeholder="Enter last name"
+              value={formInputs.lastName}
+              onChange={handleInputChange}
+              required
+            />
+            {formErrors.lastName && (
+              <div className="invalid-feedback">{formErrors.lastName}</div>
+            )}
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              className={`form-control item ${
+                formErrors.email ? "is-invalid" : ""
+              }`}
+              id="email"
+              name="email"
+              placeholder="Enter email"
+              value={formInputs.email}
+              onChange={handleInputChange}
+              required
+            />
+            {formErrors.email && (
+              <div className="invalid-feedback">{formErrors.email}</div>
+            )}
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              className={`form-control item${
+                formErrors.password ? "is-invalid" : ""
+              }`}
+              id="password"
+              name="password"
+              placeholder="Enter password"
+              value={formInputs.password}
+              onChange={handleInputChange}
+              required
+            />
+            {formErrors.password && (
+              <div className="invalid-feedback">{formErrors.password}</div>
+            )}
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">
+              Create Account
+            </button>
+          </div>
+          <div className="text-center mt-3">
+            <p
+              style={{
+                color: "grey",
+                fontStyle: "italic",
+                fontSize: "12px",
+              }}
+            >
+              Already have an account? <Link to="/log">login here</Link>
+            </p>
+          </div>
+        </form>
+
+        <div class="social-media">
+          <h5>Sign up with social media</h5>
+          <div class="social-icons">
+            <a href="#">
+              <FaFacebookF />{" "}
+            </a>
+            <a href="#">
+              <FcGoogle />{" "}
+            </a>
+            <a href="#">
+              <AiOutlineTwitter />{" "}
+            </a>
           </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

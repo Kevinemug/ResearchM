@@ -5,7 +5,9 @@ import Fade from "react-awesome-reveal";
 import HospitalCards from "./hospitalCards";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import Nav from "./navigation/nav";
+import ".././styles/hero.css";
+import Footer from "./footer/footer";
 const Hospital = () => {
   const [searchText, setSearchText] = useState("");
   const [hospitals, setHospitals] = useState([]);
@@ -31,12 +33,16 @@ const Hospital = () => {
   };
   return (
     <>
-      <Hero
+      <Nav
+        image="https://www.communicloud.com/wp-content/uploads/2021/12/Security-in-Healthcare.jpg"
+        title="We Help"
+        description="Patients Live a Healthy Longer Life!"
+      />
+      {/* <Hero
         title="Hospitals"
         description="Search For Hospitals Nearby"
-        image="https://as1.ftcdn.net/v2/jpg/02/81/21/10/1000_F_281211036_24KPea5poawt4mXYlEjRUwsCgomtjoVc.jpg"
         link="/hospitalForm"
-      />
+      /> */}
       <div className="searchContainer">
         <div className="searchDescriptionContainer">
           <p className="searchDescription">
@@ -114,6 +120,7 @@ const Hospital = () => {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 };

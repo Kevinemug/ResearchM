@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Success from "./success";
-
+import { AiOutlineUser } from "react-icons/ai";
+import Footer from "./footer/footer";
+import Nav from "./navigation/nav";
 import "../styles/member.css";
 function HospitalForm() {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -89,162 +91,164 @@ function HospitalForm() {
   };
 
   return (
-    <div className="formi">
-      <p className="apply">Apply for membership below</p>
+    <>
+      <Nav
+        title="Apply For Hospital Membership"
+        description="Together we can make the world a better place !"
+        image="https://images.ctfassets.net/19dvw6heztyg/61Wiw0rPAAhXO5QYvTE9Ho/1b172b9fba19e3a0354261d78b5840ae/membership-model.jpg?w=1440&q=75"
+      />
+      <div class="registration-form">
+        <form onSubmit={handleSubmit}>
+          <div>Apply for member ship </div>
+          <div class="form-icon">
+            <span>
+              <AiOutlineUser style={{ fontSize: "40px" }} />{" "}
+            </span>
+          </div>
 
-      <form onSubmit={handleSubmit}>
-        <div class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">
-            Province:
+          <div class="form-group">
+            <input
+              type="text"
+              name="hospitalName"
+              value={data.hospitalName}
+              onChange={handleChange}
+              placeholder="name of hospital"
+              className="form-control item"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="specialization"
+              value={data.specialization}
+              onChange={handleSpecializationChange}
+              className="form-control item"
+              placeholder=" hospital splecialization"
+            />
+          </div>
+
+          <div class="form-group">
             <input
               type="text"
               name="province"
               value={data.location.province}
               onChange={handleLocationChange}
               id="inputEmail3"
-              className="form-control"
-              style={{ width: "500px" }}
+              placeholder="province"
+              className="form-control item"
             />
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            District:
-            <input
-              type="text"
-              name="district"
-              value={data.location.district}
-              onChange={handleLocationChange}
-              class="form-control"
-              style={{ width: "500px" }}
-            />
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            Street:
+          </div>
+          <div class="form-group">
             <input
               type="text"
               name="street"
               value={data.location.street}
               onChange={handleLocationChange}
-              className="form-control"
-              style={{ width: "500px" }}
+              className="form-control item"
+              placeholder="street"
+            />{" "}
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="district"
+              value={data.location.district}
+              onChange={handleLocationChange}
+              class="form-control item"
+              placeholder="district"
             />
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            Address:
+          </div>
+          <div class="form-group">
             <input
               type="text"
               name="address"
               value={data.location.address}
               onChange={handleLocationChange}
-              className="form-control"
-              style={{ width: "500px" }}
+              className="form-control item"
+              placeholder="popular nearby place"
             />
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            License:
+          </div>
+          <div class="form-group">
+            Upload license
             <input
               type="file"
               name="license"
               onChange={handleFileChange}
-              className="form-control"
-              style={{ width: "500px" }}
+              class="form-control item"
+              placeholder="upload your license"
             />
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            Hospital Image:
+          </div>
+          <div class="form-group">
+            Upload hospital Image
             <input
               type="file"
               name="hospitalImage"
               onChange={handleFileChange}
-              className="form-control"
-              style={{ width: "500px" }}
+              className="form-control item"
+              placeholder="upload hospital image"
             />
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            Email:
+          </div>
+          <div class="form-group">
             <input
               type="email"
               name="email"
               value={data.email}
               onChange={handleChange}
-              className="form-control"
-              style={{ width: "500px" }}
+              placeholder="hospital email"
+              className="form-control item"
             />
-          </label>
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            Password:
+          </div>
+          <div class="form-group">
             <input
               type="password"
               name="password"
               value={data.password}
               onChange={handleChange}
-              className="form-control"
-              style={{ width: "500px" }}
+              placeholder="create password"
+              className="form-control item"
             />
-          </label>{" "}
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            Tel:
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              placeholder=" confirm password"
+              className="form-control item"
+            />
+          </div>
+          <div class="form-group">
             <input
               type="text"
               name="phoneNumber"
               value={data.phoneNumber}
               onChange={handleChange}
-              className="form-control"
-              style={{ width: "500px" }}
+              placeholder="phone number"
+              className="form-control item"
             />
-          </label>{" "}
-        </div>
+          </div>
+          {showSuccessPopup && (
+            <Success description=" Your Application for membership have been received successfully!we will reach out to you as soon as possible!" />
+          )}
 
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            Hospital Name
-            <input
-              type="text"
-              name="hospitalName"
-              value={data.hospitalName}
-              onChange={handleChange}
-              className="form-control"
-              style={{ width: "500px" }}
-            />
-          </label>{" "}
-        </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            specialization
-            <input
-              type="text"
-              name="specialization"
-              value={data.specialization}
-              onChange={handleSpecializationChange}
-              className="form-control"
-              style={{ width: "500px" }}
-            />
-          </label>{" "}
-        </div>
-        {showSuccessPopup && (
-          <Success description=" Your Application for membership have been received successfully!we will reach out to you as soon as possible!" />
-        )}
-
-        <button type="submit" className="btn btn-primary">
-          submit
-        </button>
-      </form>
-    </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-block create-account">
+              request membership
+            </button>
+          </div>
+          <div className="text-center mt-3">
+            <p
+              style={{
+                color: "grey",
+                fontStyle: "italic",
+                fontSize: "12px",
+              }}
+            >
+              We will never share your information with anyone else{" "}
+            </p>
+          </div>
+        </form>
+      </div>
+      <Footer />
+    </>
   );
 }
 export default HospitalForm;

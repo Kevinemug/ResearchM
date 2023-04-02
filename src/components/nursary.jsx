@@ -3,16 +3,17 @@ import Fade from "react-awesome-reveal";
 import Hero from "./hero";
 import { NavLink } from "react-router-dom";
 import NursaryCards from "./nursaryCards";
+import Nav from "./navigation/nav";
+import Footer from "./footer/footer";
+
 const Nursary = () => {
   return (
     <>
-      <NavLink to="/appointmentsPage" style={{ textDecoration: "none" }}>
-        <Hero
-          title="Services"
-          description="Taking Care Of You Is Our Top Priority"
-          image="https://www.elsevier.com/__data/assets/image/0019/1034461/HomeHealthcare-1.jpg"
-        />
-      </NavLink>
+      <Nav
+        title="Services"
+        description="Taking Care Of You Is Our Top Priority"
+        image="https://www.elsevier.com/__data/assets/image/0019/1034461/HomeHealthcare-1.jpg"
+      />
       <div className="serviceHeader">Our services</div>
       <div className="app  animate__animated animate__bounce">
         <Fade cascade>
@@ -53,6 +54,7 @@ const Nursary = () => {
           />
         </Fade>
       </div>
+      <Footer />
     </>
   );
 };

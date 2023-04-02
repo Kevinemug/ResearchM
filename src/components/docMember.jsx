@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../styles/member.css";
 import axios from "axios";
 import Success from "./success";
+import Nav from "./navigation/nav";
+import Footer from "./footer/footer";
 
 const docMember = () => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
@@ -96,6 +98,12 @@ const docMember = () => {
 
   return (
     <>
+      <Nav
+        title="Apply For Doctor Membership"
+        description="Together we can make the world a better place !"
+        image="https://images.ctfassets.net/19dvw6heztyg/61Wiw0rPAAhXO5QYvTE9Ho/1b172b9fba19e3a0354261d78b5840ae/membership-model.jpg?w=1440&q=75"
+      />
+
       <div className="formi">
         <p className="apply">Apply for membership below</p>
         <form onSubmit={handleSubmit}>
@@ -106,7 +114,7 @@ const docMember = () => {
             <div class="col-sm-10">
               <input
                 type="text"
-                class="form-control"
+                class="form-control item"
                 id="inputEmail3"
                 name="firstName"
                 value={data.firstName}
@@ -336,6 +344,7 @@ const docMember = () => {
           </div>
         </form>
       </div>
+      <Footer />
     </>
   );
 };

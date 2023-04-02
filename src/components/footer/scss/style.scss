@@ -1,0 +1,106 @@
+
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+$font-family-sans-serif-2: 'Poppins', sans-serif;
+$font-family-serif: 'Source Serif Pro', serif;
+
+
+
+body {
+	font-family: $font-family-sans-serif;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: $font-family-sans-serif;
+}
+a {
+	transition: .3s all ease;
+	&, &:hover {
+		text-decoration: none!important;
+	}
+}
+.content {
+	height: 70vh;
+}
+// footer 1
+.footer-20192 {
+	position: relative;
+	color: $white;
+	padding: 7rem 0;
+	background-color: #141d2a;
+	.container {
+		position: relative;
+	}
+	h3 {
+		font-size: 16px;
+		margin-bottom: 10px;
+		margin-top: 0;
+		line-height: 1.5;
+	}
+
+	.links {
+		li {
+			margin-bottom: 10px;
+			line-height: 1.5;
+			display: block;
+			a {
+				color: #666873;
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+	}
+
+	.social {
+		li {
+			display: inline-block;
+			position: relative;
+			a {
+				position: relative;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				display: inline-block;
+				margin: 0;
+				padding: 0;
+				background-color: #8186d5;
+				color: #fff;
+				> span {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+	}
+
+	.footer-logo {
+		color: $white;
+		font-size: 20px;
+		text-transform: uppercase;
+		letter-spacing: .1rem;
+	}
+	.copyright {
+		color: #666873;
+	}
+
+
+	.cta {
+		box-shadow: -20px -20px 0 0 rgba($dark, .2);
+		padding: 20px;
+		background-color: #8186d5;
+		top: -150px;
+		position: relative;
+		h2, h3 {
+			line-height: 1.5;
+		}
+		h3 {
+			font-size: 20px;
+		}
+	}
+}
