@@ -22,7 +22,7 @@ const docMember = () => {
     firstName: "",
     lastName: "",
     description: "",
-    role: "",
+    role: "Doctor",
     phoneNumber: "",
     specialization: [],
   });
@@ -82,12 +82,12 @@ const docMember = () => {
     });
     try {
       const response = await axios.post(
-        "https://health-savvy.onrender.com/api/admin/dashboard/doctor",
+        "https://health-savvy.onrender.com/api/register/doctor/",
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MTJlNTc2MDVkNGVhN2Q3ODQ3MWQ4OCIsImlhdCI6MTY3ODk2NjE5NSwiZXhwIjoxNjgxNTU4MTk1fQ.ta6ttAQBvDnwL5BOGSLtkqZJVhI4sz6Qhegr8Yckgio`,
+
           },
         }
       );
@@ -187,6 +187,21 @@ const docMember = () => {
                 name="phoneNumber"
                 value={data.phoneNumber}
                 onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">
+              Specialization
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="inputEmail3"
+                name="specialization"
+                value={data.specialization}
+                onChange={handleSpecializationChange}
               />
             </div>
           </div>

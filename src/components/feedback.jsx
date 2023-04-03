@@ -1,16 +1,43 @@
-import React, { useState } from 'react';
-import {AiOutlineUser, AiOutlineComment } from 'react-icons/ai';
-import ".././styles/feedback.css"
+import axios from 'axios';
+import { useState } from 'react';
+import { AiOutlineUser, AiOutlineComment } from 'react-icons/ai';
+import '.././styles/feedback.css';
+
 const Feedback = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [feedback, setFeedback] = useState('');
+  const [message, setFeedback] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (event) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    switch (name) {
+      case 'firstName':
+        setFirstName(value);
+        break;
+      case 'lastName':
+        setLastName(value);
+        break;
+      case 'feedback':
+        setFeedback(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Submit feedback data to backend API or store it in state management tool like Redux
-    setIsSubmitted(true);
+    try {
+      await axios.post('https://health-savvy.onrender.com/api/feedback/', {
+        firstName,
+        lastName,
+        message,
+      });
+      setIsSubmitted(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleReset = () => {
@@ -28,30 +55,33 @@ const Feedback = () => {
             <AiOutlineUser className="input-icon" />
             <input
               type="text"
+              name="firstName"
               placeholder="First Name"
               value={firstName}
-              onChange={(event) => setFirstName(event.target.value)}
+              onChange={handleChange}
               className="input-field"
               required
             />
           </div>
           <div className="input-container">
-            <AiOutlineUser  className="input-icon" />
+            <AiOutlineUser className="input-icon" />
             <input
               type="text"
+              name="lastName"
               placeholder="Last Name"
               value={lastName}
-              onChange={(event) => setLastName(event.target.value)}
+              onChange={handleChange}
               className="input-field"
               required
             />
           </div>
           <div className="input-container">
-            <AiOutlineComment  className="input-icon" />
+            <AiOutlineComment className="input-icon" />
             <textarea
+              name="feedback"
               placeholder="Feedback"
-              value={feedback}
-              onChange={(event) => setFeedback(event.target.value)}
+              value={message}
+              onChange={handleChange}
               className="input-field feedback-field"
               required
             />

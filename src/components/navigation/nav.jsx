@@ -123,11 +123,6 @@ const Nav = ({ image, title, description }) => {
                           </a>
                         </NavLink>
                       </li>
-                      <li>
-                        <NavLink>
-                          <a href="#">Menu Three</a>
-                        </NavLink>
-                      </li>
                     </ul>
                   </li>
                   <li className="has-children">
@@ -155,35 +150,13 @@ const Nav = ({ image, title, description }) => {
                     <ul class="dropdown arrow-top">
                       <li>
                         <NavLink to="/memberShip">
-                          <a href="">Request Membership</a>
+                          <a href="/membership">Request Membership</a>
                         </NavLink>
                       </li>
                       <li onClick={handleClick}>
                         <NavLink to="/pharmacy">
                           <a href="/">Find Pharmacy</a>
                         </NavLink>
-                      </li>
-                      <li>
-                        <NavLink>
-                          <a href="#">Menu Three</a>
-                        </NavLink>
-                      </li>
-                      <li class="has-children">
-                        <a href="#">Dropdown</a>
-                        <ul class="dropdown">
-                          <li>
-                            <a href="#">Menu One</a>
-                          </li>
-                          <li>
-                            <a href="#">Menu Two</a>
-                          </li>
-                          <li>
-                            <a href="#">Menu Three</a>
-                          </li>
-                          <li>
-                            <a href="#">Menu Four</a>
-                          </li>
-                        </ul>
                       </li>
                     </ul>
                   </li>

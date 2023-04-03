@@ -58,6 +58,16 @@
   .card-btn:hover {
     background-color: #0077cc;
   }
+  @media only screen and (min-width: 481px) and (max-width: 1024px) { 
+    .whyContainer{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 30px;
+      margin-bottom: 50px;
+      padding-left: 20px;
+  }
+
+  }
   @media only screen and (min-width: 1200px) {
   
 

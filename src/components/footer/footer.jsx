@@ -45,11 +45,11 @@ navigate("/contact")
                   Klab Team
                 </a>
                 <p class="copyright">
-                  <small>&copy; 2023</small>
+                  <small style={{color:"black"}}>&copy; 2023</small>
                 </p>
               </div>
               <div class="col-sm">
-                <h3>Customers</h3>
+                <h3 style={{color:"white"}}>Customers</h3>
                 <ul class="list-unstyled links">
                   <li>
                     <a href="#">Buyer</a>
@@ -60,7 +60,7 @@ navigate("/contact")
                 </ul>
               </div>
               <div class="col-sm">
-                <h3>Company</h3>
+                <h3 style={{color:"white"}}>Company</h3>
                 <ul class="list-unstyled links">
                   <li>
                     <a href="#">About us</a>
@@ -74,7 +74,7 @@ navigate("/contact")
                 </ul>
               </div>
               <div class="col-sm">
-                <h3>Further Information</h3>
+                <h3 style={{color:"white"}}>Further Information</h3>
                 <ul class="list-unstyled links">
                   <li>
                     <a href="#">Terms &amp; Conditions</a>
@@ -85,7 +85,7 @@ navigate("/contact")
                 </ul>
               </div>
               <div class="col-md-3">
-                <h3>Follow us</h3>
+                <h3 style={{color:"white"}}>Follow us</h3>
                 <ul class="list-unstyled social">
                   <li>
                     <a href="#">
