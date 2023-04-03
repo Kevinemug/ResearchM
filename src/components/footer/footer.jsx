@@ -18,7 +18,7 @@ navigate("/contact")
     <>
       <footer
         class="footer-20192"
-        style={{ background: "#007bff", marginTop: "60px" }}
+        style={{ background: "#007bff", marginTop: "80px" }}
       >
         <div class="site-section" style={{ background: "#007bff" }}>
           <div class="container">
