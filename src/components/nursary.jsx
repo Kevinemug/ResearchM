@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import NursaryCards from "./nursaryCards";
 import Nav from "./navigation/nav";
 import Footer from "./footer/footer";
+import Title from "./title";
 
 const Nursary = () => {
   return (
@@ -14,7 +15,7 @@ const Nursary = () => {
         description="Taking Care Of You Is Our Top Priority"
         image="https://www.elsevier.com/__data/assets/image/0019/1034461/HomeHealthcare-1.jpg"
       />
-      <div className="serviceHeader">Our services</div>
+<Title title="Our services"/>
       <div className="app  animate__animated animate__bounce">
         <Fade cascade>
           <NursaryCards

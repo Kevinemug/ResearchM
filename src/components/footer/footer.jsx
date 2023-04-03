@@ -5,7 +5,15 @@ import "./css/style.css";
 import "./js/jquery-3.3.1.min.js";
 import "./js/popper.min.js";
 import "./js/bootstrap.min.js";
+import { useNavigate } from "react-router-dom";
 const Footer = () => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+
+navigate("/contact")
+
+
+  }
   return (
     <>
       <footer
@@ -22,10 +30,13 @@ const Footer = () => {
                 <h2 class="mb-0">We Are ALways Looking To Improve </h2>
                 <h3 class="text-dark">Any FeedBack?</h3>
               </div>
-              <div class="ml-auto">
-                <a href="#" class="btn btn-dark rounded-0 py-3 px-5">
-                  Contact us
-                </a>
+              <div class="ml-auto" onClick={handleClick}>
+                                <a href="#" class="btn btn-dark rounded-0 py-3 px-5">
+                                Contact us
+                              </a>
+              
+                
+                
               </div>
             </div>
             <div class="row">
