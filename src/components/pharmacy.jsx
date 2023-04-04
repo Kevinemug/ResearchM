@@ -80,7 +80,7 @@ const Pharmacy = () => {
           <PharmaCard
             key={hospital.id}
             // hospitalName={hospital.pharmacy.pharmacyName}
-            location={"Located "+ hospital.location.address}
+            location="Located at Kigali,Kicukiro KN 5 rd"
             img={hospital.medicineImage}
             medicineName={hospital.pharmacy.pharmacyName}
           />
