@@ -24,12 +24,12 @@ const AppointmentBooking = () => {
                   src="https://www.kauveryhospital.com/doctorimage/recent/salem/Dr_P_V_Dhanapal.jpg"
                 />
               </div>
-              <div className="helperName">Dr.Kex Markessy</div>
-              <div className="helperDescription">_Cardiologist</div>
+              <div className="helperName">Dr. Jean Paul Ngoga</div>
+              <div className="helperDescription">_dermatologist</div>
             </div>
             <div className="five">
               <div className="helperDesc">
-                Dr.Markessy is a famous world recoganized cardilogist,with over
+                Dr.Markessy is a famous world recoganized dermatologist,with over
                 20 years of experience ,want to hire him as your private doctor?
                 book an appointment with him.
               </div>
