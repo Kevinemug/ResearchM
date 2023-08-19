@@ -42,7 +42,7 @@ navigate("/contact")
             <div class="row">
               <div class="col-sm">
                 <a href="#" class="footer-logo">
-                  Klab Team
+                    Research methodology
                 </a>
                 <p class="copyright">
                   <small style={{color:"black"}}>&copy; 2023</small>
