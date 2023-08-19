@@ -27,6 +27,7 @@ const Hospital = () => {
     } catch (error) {
       console.error(error);
     }
+    setLoading(false)
     setShowTopSearches(false);
     console.log(searchText);
     setLoading(true);
@@ -64,7 +65,7 @@ const Hospital = () => {
         </div>
       </div>
       <div className="top">
-        <p className="topSearches">Top Searches</p>
+        <p className="topSearches">  {loading ? " Searching.."  :"searches"} </p>
       </div>
       <div className="hosCardsContainer">
         {hospitals.map((hospital) => (
