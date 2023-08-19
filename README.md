@@ -1,4 +1,11 @@
-# healthSavy
-Health Savy is a website that helps people to find pharmacies and hospitals near them depending on their search inputs,you can also book appointments with recoganized doctors online or get private doctors and nurses to care for you at home
+#Research Methodology Team
 
-note that This site is still under construction , for more info visit it at https://healthy-savvy.vercel.app/
+
+Igiraneza Josue
+Nishimwe Octave
+Ishimwe Maxime
+Mugisha Kevine
+Niyonizeye Ephaste
+Shyirambere Emmanuel
+
+
