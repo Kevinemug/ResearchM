@@ -15,11 +15,12 @@ const Hospital = () => {
   const [loading, setLoading] = useState(false);
   const handleSearch = async () => {
     try {
+      setLoading(true);
+
       const response = await axios.post(
         `https://health-savvy.onrender.com/api/search/hospital?specialization=${searchText}`
         // { specialization: searchText }
       );
-      setLoading(true);
       console.log(response);
       const data = response.data;
 
