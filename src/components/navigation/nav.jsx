@@ -64,7 +64,7 @@ const Nav = ({ image, title, description }) => {
                   <MdHealthAndSafety
                     style={{ fontSize: "50px", color: "dodgerblue" }}
                   />
-                  HS
+                  TeleHospital
                 </a>
               </h1>
             </div>
