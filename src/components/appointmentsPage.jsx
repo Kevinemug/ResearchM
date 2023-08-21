@@ -8,7 +8,7 @@ const AppointmentsPage = () => {
   return (
     <>
       <Nav
-        image="https://www.yashodahealthcare.com/book-an-appointment/images/1612959243_book.webp"
+        image="https://previews.123rf.com/images/azrisuratmin/azrisuratmin1605/azrisuratmin160500102/57160118-medical-concept-doctor-appointment-word-written-on-blackboard-with-stethoscope-on-wood-background.jpg"
         title="Book an Appointment "
         description=" with recoganized doctors and nurses In less than a few seconds"
       />
